@@ -2,9 +2,20 @@
 
 git pull
 
-username="moodle"
+username="YOURNAME"
 
-git clone git@github.com:$username/moodle.git ../moodle
+homedir=`pwd`
+if [ ! -d "$homedir/../moodle" ]; then
+
+    git clone git@github.com:$username/moodle.git ../moodle
+
+    pushd $homedir/../moodle
+    git remote add upstream https://github.com/moodle/moodle.git
+    git fetch upstream
+    git submodule update --recursive --init
+    popd
+fi
+
 
 vagrant box update
 

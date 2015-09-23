@@ -19,5 +19,5 @@ sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
 sudo apt-get install -y phpmyadmin > /dev/null
 
-sudo sed -i "s/.*\['auth_type'\].*/\$cfg['Servers'][\$i]['auth_type'] = 'config';\n\$cfg['Servers'][\$i]['user'] = 'root';\n\$cfg['Servers'][\$i]['password'] = 'agora';/" /etc/phpmyadmin/config.inc.php
-sudo sed -i '/^.*open_basedir/ s/$/:\/tmp\//' /etc/apache2/conf.d/phpmyadmin.conf
+sudo sed -i "s/.*\['auth_type'\].*/\$cfg['Servers'][\$i]['auth_type'] = 'config';\n\$cfg['Servers'][\$i]['user'] = 'root';\n\$cfg['Servers'][\$i]['password'] = '$pass';/" /etc/phpmyadmin/config.inc.php
+sudo sed -i '/^.*open_basedir/ s/$/:\/tmp\//' /etc/apache2/conf-enabled/phpmyadmin.conf
