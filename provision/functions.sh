@@ -138,7 +138,7 @@ EOM" > /dev/null
 
 function create_mysql_db {
     dbname=$1
-    execute_in_mysql "CREATE DATABASE IF NOT EXISTS $dbname"
+    execute_in_mysql "CREATE DATABASE IF NOT EXISTS $dbname default character set UTF8 collate UTF8_bin;"
 }
 
 function load_version {

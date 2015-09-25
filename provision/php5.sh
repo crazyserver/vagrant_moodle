@@ -62,9 +62,6 @@ echo 'Install ZendOpache'
 
 #yes "" | sudo pecl install Zendopcache > /dev/null
 
-place=`sudo find / -name 'opcache.so'`
-
-echo "zend_extension=$place" | sudo tee -a /etc/php5/mods-available/opcache.ini
 echo "opcache.enable=1" | sudo tee -a /etc/php5/mods-available/opcache.ini
 echo "opcache.memory_consumption=256" | sudo tee -a /etc/php5/mods-available/opcache.ini
 echo "opcache.max_accelerated_files=4000" | sudo tee -a /etc/php5/mods-available/opcache.ini
@@ -79,8 +76,6 @@ echo "opcache.validate_timestamps = 1" | sudo tee -a /etc/php5/mods-available/op
 echo "opcache.save_comments = 1" | sudo tee -a /etc/php5/mods-available/opcache.ini
 echo "opcache.enable_file_override = 0" | sudo tee -a /etc/php5/mods-available/opcache.ini
 
-sudo ln -s /etc/php5/mods-available/opcache.ini /etc/php5/apache2/conf.d/20-opcache.ini
-
 echo 'Install memcache'
 sudo apt-get install -y php5-memcache memcached > /dev/null
 
@@ -90,10 +85,10 @@ echo 'Install XDebug'
 
 sudo apt-get install -y php5-xdebug > /dev/null
 
-echo "xdebug.default_enable=1" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.idekey=\"vagrant\"" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.remote_enable=1" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.remote_autostart=0" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.remote_port=9000" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.remote_handler=dbgp" | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
-echo "xdebug.remote_host=10.0.2.2 " | sudo tee -a /etc/php5/conf.d/20-xdebug.ini
+echo "xdebug.default_enable=1" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.idekey=\"vagrant\"" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.remote_enable=1" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.remote_autostart=0" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.remote_port=9000" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.remote_handler=dbgp" | sudo tee -a /etc/php5/mods-available/xdebug.ini
+echo "xdebug.remote_host=10.0.2.2 " | sudo tee -a /etc/php5/mods-available/xdebug.ini
