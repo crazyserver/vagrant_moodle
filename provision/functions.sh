@@ -104,6 +104,10 @@ function execute_in_mysql {
     sudo mysql -uroot -p$pass -e "$1"
 }
 
+function execute_in_pgsql {
+    echo $1 | sudo su - postgres -c "psql postgres" > /dev/null
+}
+
 function create_oracle_db {
     dbname=$1
 
@@ -138,7 +142,13 @@ EOM" > /dev/null
 
 function create_mysql_db {
     dbname=$1
-    execute_in_mysql "CREATE DATABASE IF NOT EXISTS $dbname default character set UTF8 collate UTF8_bin;"
+    execute_in_mysql "CREATE DATABASE IF NOT EXISTS $dbname default character set UTF8 collate utf8_unicode_ci;"
+}
+
+function create_pgsql_db {
+    dbname=$1
+    username=$2
+    execute_in_pgsql "CREATE DATABASE $dbname with OWNER $username encoding 'unicode';"
 }
 
 function load_version {

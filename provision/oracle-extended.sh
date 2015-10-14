@@ -18,6 +18,7 @@ echo instantclient,/usr/lib/oracle/12.1/client64/lib | sudo pecl install oci8  >
 echo "extension=oci8.so" | sudo tee -a /etc/php5/mods-available/oci8.ini
 
 sudo ln -s /etc/php5/mods-available/oci8.ini /etc/php5/apache2/conf.d/30-oci8.ini
+sudo ln -s /etc/php5/mods-available/oci8.ini /etc/php5/cli/conf.d/30-oci8.ini
 
 sudo service apache2 restart > /dev/null
 sudo service oracle-xe restart > /dev/null

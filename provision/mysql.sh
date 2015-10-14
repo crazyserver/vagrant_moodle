@@ -1,7 +1,8 @@
 #!/bin/bash
 
+source "/vagrant/provision/functions.sh"
+
 pass=$1
-dbname=$2
 
 echo 'Install MySQL'
 

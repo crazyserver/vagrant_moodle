@@ -8,7 +8,7 @@ sudo apt-get update  > /dev/null
 sudo apt-get autoremove -y  > /dev/null
 
 echo 'Install base packages'
-sudo apt-get install -y --force-yes  ia32-libs texlive ghostscript imagemagick vsftpd > /dev/null
+sudo apt-get install -y --force-yes  texlive ghostscript imagemagick vsftpd > /dev/null
 
 echo 'Log permissions'
 sudo chmod -R 777 /var/log
@@ -16,6 +16,10 @@ sudo chmod -R 777 /var/log
 echo 'Install locales'
 sudo locale-gen ca_ES  > /dev/null
 sudo locale-gen ca_ES.UTF-8  > /dev/null
+sudo locale-gen eu_ES  > /dev/null
+sudo locale-gen eu_ES.UTF-8  > /dev/null
+sudo locale-gen gl_ES  > /dev/null
+sudo locale-gen gl_ES.UTF-8  > /dev/null
 sudo locale-gen es_ES  > /dev/null
 sudo locale-gen es_ES.UTF-8  > /dev/null
 sudo dpkg-reconfigure locales > /dev/null

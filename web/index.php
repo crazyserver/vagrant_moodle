@@ -21,8 +21,9 @@
 
 	<fieldset>
 		<legend> Manage </legend>
-		<a href="<?php print "http://".$_SERVER["SERVER_NAME"].":8080/apex"?>">[Oracle admin]</a>
 		<a href="/phpmyadmin/">[MySQL admin]</a>
+		<a href="/phppgadmin/">[PostgreSQL admin]</a>
+		<a href="<?php print "http://".$_SERVER["SERVER_NAME"].":8080/apex/f?p=4950"?>">[Oracle admin]</a>
 		<a href="/opcache.php">[OpCache]</a>
 		<a href="/phpinfo.php">[PHPInfo]</a>
 	</fieldset>
