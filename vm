@@ -16,8 +16,21 @@ if [ ! -d "$homedir/../moodle" ]; then
     popd
 fi
 
+if [ ! -d "$homedir/../moodlemobile2" ]; then
+    git clone git@github.com:$username/moodlemobile2.git ../moodlemobile2
+
+    pushd $homedir/../moodlemobile2
+    git remote add upstream https://github.com/moodlehq/moodlemobile2.git
+    git fetch upstream
+    git submodule update --recursive --init
+    popd
+fi
+
 
 vagrant box update
 
 echo "Starting the VM"
 vagrant up
+
+echo "Running ADB init"
+vagrant ssh -c "/vagrant/provision/adbinit.sh"

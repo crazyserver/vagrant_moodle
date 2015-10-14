@@ -40,6 +40,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "../moodle", "/git/moodle", mount_options: ["dmode=775,fmode=775"]
+  config.vm.synced_folder "../moodlemobile2", "/git/moodlemobile2", mount_options: ["dmode=775,fmode=775"]
   config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=775,fmode=775"]
 
   # Provider-specific configuration so you can fine-tune various
@@ -60,6 +61,8 @@ Vagrant.configure(2) do |config|
                   "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "android", "--vendorid", "0x18d1"]
   end
   #
   # View the documentation for the provider you are using for more

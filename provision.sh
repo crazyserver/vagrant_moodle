@@ -18,11 +18,14 @@ case "$database" in
         /vagrant/provision/pgsql.sh $pass
         ;;
 esac
-#/vagrant/provision/moodlemobile.sh
+
+/vagrant/provision/ionic.sh
 
 sudo service apache2 restart
 
 /vagrant/provision/moodle.sh $database
+
+execute_as_vagrant "/vagrant/provision/moodlemobile.sh"
 
 #Here we must write the latest version number
 save_version 2015061000

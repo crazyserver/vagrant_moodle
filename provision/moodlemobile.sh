@@ -1,29 +1,23 @@
 #!/bin/bash
 
-echo 'Install Node.js'
-sudo apt-get install -y --force-yes npm > /dev/null
-sudo apt-get install -y --force-yes python-software-properties python g++ make > /dev/null
-sudo apt-get update > /dev/null
-sudo apt-get install -y --force-yes nodejs > /dev/null
+source "/vagrant/provision/functions.sh"
 
-sudo ln -s /usr/bin/nodejs /usr/local/bin/node
-sudo npm config set strict-ssl false
-sudo npm cache clean
+echo 'Provision MoodleMobile2'
 
-echo 'Install Shifter'
-sudo npm install shifter@0.4.6 -g
+wwwdir=/git/moodlemobile2
 
-echo 'Install IONIC'
-sudo npm install cordova ionic -g
-
-pushd /dades/moodlemobile2
-ionic state restore
-ionic platform add ios
-ionic platform add android
-sudo npm install
-sudo npm install -g bower
-sudo npm install -g gulp
-bower install
-gulp
-
+pushd $wwwdir
+echo 'Ionic State Restore'
+ionic state restore > /dev/null
+echo 'Ionic Add iOS'
+ionic platform add ios > /dev/null
+echo 'Ionic Add Android'
+ionic platform add android > /dev/null
+echo 'Install all dependencies'
+npm install > /dev/null
+echo 'Install libraries from bower.json'
+bower install > /dev/null
+echo 'Create build files with Gulp'
+npm rebuild node-sass > /dev/null
+gulp > /dev/null
 popd

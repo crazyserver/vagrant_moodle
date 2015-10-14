@@ -167,4 +167,7 @@ function save_version {
     echo $1 | sudo tee /vm_version > /dev/null
 }
 
+function execute_as_vagrant {
+   su -c "$1" vagrant
+}
 
