@@ -2,6 +2,10 @@
 
 git pull
 
+if [ -z "$(vagrant plugin list | grep vagrant-hosts)" ]; then
+    vagrant plugin install vagrant-hosts
+fi
+
 username="YOURNAME"
 
 homedir=`pwd`
@@ -33,4 +37,4 @@ echo "Starting the VM"
 vagrant up
 
 echo "Running ADB init"
-vagrant ssh -c "/vagrant/provision/adbinit.sh"
+vagrant ssh -c "/vagrant/provision/ionicinit.sh"

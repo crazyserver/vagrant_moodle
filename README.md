@@ -38,6 +38,8 @@ In the root directory there is an script called vm. You may use this script to m
 
 This will start the VM getting and executing the latest updates. This should take a few minutes.
 
+After that all you need is to enter to your [Vagrant VM] on http://moodle.test/
+
 You may also want to use vagrant standard commands:
 
 * **vagrant up** to start the VM.
@@ -54,10 +56,12 @@ You may also want to use vagrant standard commands:
 
 You must change your /etc/hosts to access successfully to all the VM's:
 
- * 192.168.33.5 moodle
+ * 192.168.33.5 moodle moodle.test
 
 
 Oracle installation based in [vagrant-oracle-xe]
+
+[Vagrant VM]: http://moodle.test/
 
 [Vagrant]: http://www.vagrantup.com/
 

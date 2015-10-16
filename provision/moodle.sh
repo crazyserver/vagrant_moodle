@@ -18,9 +18,18 @@ sudo cp $wwwdir/config-dist.php $wwwdir/config.php
 #Repace password
 sed -i -e s/\'password\'/\'$password\'/ $wwwdir/config.php
 #Replace wwwroot
-sed -i -e s%example.com%moodle% $wwwdir/config.php
+sed -i -e s%example.com%moodle.test% $wwwdir/config.php
 #Replace Moodledata
 sed -i -e s%/home/example/moodledata%$datadir% $wwwdir/config.php
+
+#Developer mode
+sed -i '/error_reporting/s/^\/\///' $wwwdir/config.php
+sed -i '/display_errors/s/^\/\///' $wwwdir/config.php
+sed -i '/$CFG->debug = /s/^\/\///' $wwwdir/config.php
+sed -i '/$CFG->debugdisplay = /s/^\/\///' $wwwdir/config.php
+sed -i '/$CFG->showcrondebugging = /s/^\/\///' $wwwdir/config.php
+sed -i '/$CFG->tool_generator_users_password = /s/^\/\///' $wwwdir/config.php
+sed -i '/$CFG->tool_generator_users_password = /s/examplepassword/moodle/' $wwwdir/config.php
 
 case "$database" in
     mysql)
@@ -56,4 +65,5 @@ case "$database" in
         ;;
 esac
 
-php $wwwdir/admin/cli/install_database.php --agree-license --lang=en --adminpass=$password
+php $wwwdir/admin/cli/install_database.php --agree-license --lang=en --adminpass=$password --adminemail=admin@test.invalid --fullname=Vagrant --shortname=vagrant >/dev/null
+php $wwwdir/admin/tool/generator/cli/maketestsite.php --size=S >/dev/null

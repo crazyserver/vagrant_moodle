@@ -16,16 +16,18 @@
 
 <body>
 	<fieldset>
-		<a href="/moodle/">Moodle</a>
+		<legend> Apps </legend>
+		<a href="http://moodle.test/moodle/">Moodle</a><br>
+		<a href="http://moodle.test:8100">Moodle Mobile 2</a>
 	</fieldset>
 
 	<fieldset>
 		<legend> Manage </legend>
-		<a href="/phpmyadmin/">[MySQL admin]</a>
-		<a href="/phppgadmin/">[PostgreSQL admin]</a>
-		<a href="<?php print "http://".$_SERVER["SERVER_NAME"].":8080/apex/f?p=4950"?>">[Oracle admin]</a>
-		<a href="/opcache.php">[OpCache]</a>
-		<a href="/phpinfo.php">[PHPInfo]</a>
+		<a href="/phpmyadmin/">[MySQL admin]</a><br>
+		<a href="/phppgadmin/">[PostgreSQL admin]</a><br>
+		<a href="<?php print "http://".$_SERVER["SERVER_NAME"].":8080/apex/f?p=4950"?>">[Oracle admin]</a><br>
+		<a href="/opcache.php">[OpCache]</a><br>
+		<a href="/phpinfo.php">[PHPInfo]</a><br>
 	</fieldset>
 
 </body>

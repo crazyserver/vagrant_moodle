@@ -16,6 +16,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.hostname = "moodle"
 
+  config.vm.provision :hosts do |provisioner|
+    provisioner.add_host '127.0.0.1', ["moodle.test"]
+  end
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -72,7 +76,7 @@ Vagrant.configure(2) do |config|
   # such as FTP and Heroku are also available. See the documentation at
   # https://docs.vagrantup.com/v2/push/atlas.html for more information.
   #config.push.define "atlas" do |push|
-  #  push.app = "projectestac/moodle"
+  #  push.app = "moodle/moodle"
   #end
 
   # Enable provisioning with a shell script. Additional provisioners such as
