@@ -45,8 +45,14 @@ fi
 
 vagrant box update
 
-echo "Starting the VM"
+echo "Starting the VM..."
 vagrant up
+echo "VM started!"
 
-echo "Running ADB init"
-vagrant ssh -c "/vagrant/provision/ionicinit.sh"
+if [ -n "$1" ]; then
+	echo "Running Ionic..."
+	vagrant ssh -c "/vagrant/provision/ionicinit.sh"
+else
+	echo "Not running Ionic"
+	echo "Execute vagrant ssh -c /vagrant/provision/ionicinit.sh"
+fi
